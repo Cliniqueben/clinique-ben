@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clinique Médicale BEN</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f8ff;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0d6efd, #00b4d8);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 { margin: 0; font-size: 40px; }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: white;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #0d6efd;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      margin-top: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1ebe5d;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0d6efd;
+      color: white;
+      margin-top: 40px;
+    }
+
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Clinique Médicale BEN</h1>
+  <p>Soins modernes & prise de rendez-vous rapide</p>
+</header>
+
+<nav>
+  <a href="#accueil">Accueil</a>
+  <a href="#rdv">Rendez-vous</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="accueil">
+  <h2>Bienvenue</h2>
+  <p>Votre santé est notre priorité. Prenez rendez-vous en quelques secondes.</p>
+</section>
+
+<section id="rdv">
+  <h2>Prendre un rendez-vous</h2>
+
+  <div class="card">
+    <form id="rdvForm">
+
+      <label>Nom complet</label>
+      <input type="text" id="nom" required>
+
+      <label>Téléphone</label>
+      <input type="text" id="tel" required>
+
+      <label>Spécialité</label>
+      <select id="service">
+        <option>Consultation générale</option>
+        <option>Pédiatrie</option>
+        <option>Gynécologie</option>
+        <option>Ophtalmologie</option>
+        <option>Cardiologie</option>
+        <option>Urgences</option>
+      </select>
+
+      <label>Date souhaitée</label>
+      <input type="date" id="date" required>
+
+      <button type="submit">Envoyer sur WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>📍 Niamey, Quartier Yantala</p>
+  <p>📞 +227 96 41 46 46</p>
+</section>
+
+<footer>
+  © 2026 Clinique Médicale BEN
+</footer>
+
+<a class="whatsapp" href="https://wa.me/22796414646" target="_blank">
+  WhatsApp
+</a>
+
+<script>
+document.getElementById("rdvForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let nom = document.getElementById("nom").value;
+  let tel = document.getElementById("tel").value;
+  let service = document.getElementById("service").value;
+  let date = document.getElementById("date").value;
+
+  let message =
+`Bonjour Clinique Médicale BEN,
+Je souhaite prendre un rendez-vous :
+
+Nom : ${nom}
+Téléphone : ${tel}
+Service : ${service}
+Date : ${date}`;
+
+  let url = "https://wa.me/22796414646?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+});
+</script>
+
+</body>
+</html>
